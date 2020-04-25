@@ -1,0 +1,442 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Multi-page template</title>
+
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
+</head>
+
+
+
+<!-- Start of first page: #one -->
+<div data-role="page" id="one">
+
+	<div data-role="header">
+		<h1>Multi-page</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<h2>Welcome to my Web Software assignment!</h2>
+
+		<br>
+        Welcome to the application, login or register.
+
+		<h3>Show internal pages:</h3>
+		<p><a href="#register" class="ui-btn ui-shadow ui-corner-all">Register</a></p>
+		<p><a href="#login" class="ui-btn ui-shadow ui-corner-all">Login</a></p>
+
+	</div><!-- /content -->
+
+	<div data-role="footer" data-theme="a">
+		<h4>Stephen Holland Assignment</h4>
+	</div><!-- /footer -->
+</div><!-- /page one -->
+
+<!-- Start of Register page: #two -->
+<div data-role="page" id="two" data-theme="a">
+
+	<div data-role="header">
+		<h1>Registering a new user account</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<h2>Two</h2>
+		<p>I have an id of "two" on my page container. I'm the second page container in this multi-page template.</p>
+		<p>Notice that the theme is different for this page because we've added a few <code>data-theme</code> swatch assigments here to show off how flexible it is. You can add any content or widget to these pages, but we're keeping these simple.</p>
+		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Back to page "one"</a></p>
+
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>stephen holland B00122664 assignment</h4>
+	</div><!-- /footer -->
+</div><!-- /page two -->
+
+<!-- Start of third page: #popup -->
+<div data-role="page" id="popup">
+
+	<div data-role="header" data-theme="b">
+		<h1>Dialog</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<h2>Popup</h2>
+		<p>I have an id of "popup" on my page container and only look like a dialog because the link to me had a <code>data-rel="dialog"</code> attribute which gives me this inset look and a <code>data-transition="pop"</code> attribute to change the transition to pop. Without this, I'd be styled as a normal page.</p>
+		<p><a href="#one" data-rel="back" class="ui-btn ui-shadow ui-corner-all ui-btn-inline ui-icon-back ui-btn-icon-left">Back to page "one"</a></p>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page popup -->
+
+
+
+
+<!--  Strart of login page ------->
+
+<div data-role="page" id="login" data-theme="a">
+<div data-role="header">
+		<h1>Login page</h1>
+	</div><!-- /header -->
+
+<div role="main" class="ui-content">
+
+    Username <input type="text" name="login_username" id="login_username" value="">
+    Password <input type="text" name="login_pass" id="login_pass" value="">
+
+<button class="ui-btn" id="loginButton">Submit</button>
+
+<h4>Login credentials</h4><br>
+<p>  User password  AccType </p>
+<p>	s@m.com	    1       customer   </p>	<br>
+<p>	s@ms.com	2	    driver	</p> <br>
+<p>	s@msn.com	3	    manager	</p> <br>
+
+	</div><!-- /content -->
+
+
+</div>
+
+<div data-role="page" id="register" data-theme="a">
+
+<div data-role="header">
+		<h1>Register</h1>
+	</div><!-- /header -->
+
+<div role="main" class="ui-content">
+		<h2>Two</h2>
+        
+       Username <input type="text" name="username" id="username" value="">
+       Password <input type="text" name="pass" id="pass" value="">
+       Acctype <input type="text" name="acctype" id="acctype" value="">
+<button class="ui-btn" id="registeredButton">Submit</button>
+	
+	</div><!-- /content -->
+</div>
+
+
+<!----------   Stary of Manager page --------------->
+
+<div data-role="page" id="manager" data-theme="a">
+	<div data-role="header">
+			<h1>Manager page </h1>
+		</div id = "data">
+		<ul>
+			<li><a href="#/index">Home</a></li>
+			<li><a href="#/donuts/new">Add new Product</a></li>
+			<li><a href="#/weather/index">Display Weather </a></li>
+		
+		  </ul>
+
+<p> At the moment Manager can see the weather , Add a new product to the product list</p> <br>
+
+<p> will be adding function here to see the order income etc......</p>
+	
+
+
+	</div>
+
+	</div>
+
+	</div>
+
+
+
+<!---     Beginning of Driver PAge ------------>
+<div data-role="page" id="driver" data-theme="a">
+
+	<head>
+	<body onload="displayordersFunction()"></body>
+	<title>Driver page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+  
+  <nav class="navbar navbar-default">
+	<div class="container-fluid">
+	  <div class="navbar-header">
+		<a class="navbar-brand" href="#">Web software assignment</a>
+	  </div>
+	  <ul class="nav navbar-nav">
+		<ul></ul>
+			<li><a href="#/index">Home</a></li>
+			<li><a href="#/weather/index">Get the Weather forcast !!!!!!!!!!!!!!</a></li>
+		
+		
+	  </ul>
+	</div>
+  </nav>
+
+<div class="container">
+
+			<div data-role="header">
+				<h1>Driver page!</h1>
+			</div><!-- /header -->
+			
+		
+<div id="data1"></div>
+		
+</div>
+</body>
+
+</div>
+
+
+
+
+
+	
+<!--  Start of Customer Page ------------->
+		
+<div data-role="page" id="customer" data-theme="a">
+	<head>
+		<body onload="productsFunction()">
+		<title>Customer</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	  </head>
+	  <body>
+	  
+	  <nav class="navbar navbar-default">
+		<div class="container-fluid">
+		  <div class="navbar-header">
+			<a class="navbar-brand" href="#">Web Software symfony assignment</a>
+		  </div>
+		  <ul class="nav navbar-nav">
+			<ul></ul>
+			<li><a href="#/index">Home</a></li>			
+		  </ul>
+		</div>
+	  </nav>
+
+		    <div class="container">
+
+				<div data-role="header">
+					<h1>Customer</h1>
+				</div><!-- /header -->
+				
+				  <div id = "data2"> </div>
+			
+			<div role="main" class="ui-content">
+
+				<form action="">
+			
+					<br>
+					<input type="button" onclick="myFunction()" value="add to order list">
+					<br><br>
+		
+				  </form>
+				
+					
+				   Your Order List <input type="text" name="productOrdered" id="productOrdered" value="">
+				  
+			<button class="ui-btn" id="orderButton">Send Order</button>		
+				
+		</body>
+	
+</div>	
+
+</html>
+
+<!---  Start of the javascript functions ---------->
+
+<script>
+
+$( "#loginButton" ).click(function() {
+
+    var un = $("#login_username").val();
+    var pw = $("#login_pass").val();
+  
+ 
+
+    $.post( "/backend", { type: "login", username:un, password:pw})
+    .done(function( data ) {
+    alert( "Type of Account is: " + data );
+
+	if (data == 'customer'){
+			window.location="/index#customer";
+			document.getElementById("data2").innerHTML = window.productsFunction();
+	}else if(data == 'driver'){
+			alert("inside driver");
+			window.location="/index#driver";
+			document.getElementById("data1").innerHTML = window.displayordersFunction();
+
+	}else if(data == 'manager'){
+		window.location="/index#manager";
+		document.getElementById("data").innerHTML = window.productsFunction();
+		
+		
+	}
+  });
+
+});
+
+
+
+
+
+    $( "#registeredButton" ).click(function() {
+	
+    var un = $("#username").val();
+    console.log(un);
+    var pw = $("#pass").val();
+    console.log(pw);
+    var ac = $("#acctype").val();
+    console.log(ac);
+
+    $.post( "/backend", { type: "register", username:un, password:pw, acctype:ac})
+    .done(function( data ) {
+    alert( "Data Loaded: " + data );
+  });
+
+    });
+
+
+	
+    $( "#orderButton" ).click(function() {
+		alert("inside irderButton");
+		
+    var po = $("#productOrdered").val();
+    console.log(po);
+
+	alert( "Processing order: "+ po);
+   
+
+    $.post( "/backend", { type: "orders", productsordered:po })
+    .done(function( data ) {
+    alert( "product saved : " + data );
+  });
+
+    });
+
+
+
+	
+
+
+function productsFunction(){
+
+alert("inside products function");
+	$.post( "/backend", { type: "products"})
+    .done(function( data_return ) {
+
+alert(data_return);
+
+$('#data2').html(data_return);
+
+var searchValue = "product";
+
+    
+
+
+
+});
+}   
+
+
+
+function displayordersFunction(){
+
+alert("inside displayorders function");
+	$.post( "/backend", { type: "displayorders"})
+    .done(function( data_return ) {
+
+alert(data_return);
+
+$('#data1').html(data_return);
+
+
+var searchValue = "product";
+
+
+
+});
+}   
+
+
+
+
+
+
+
+
+function newProductsFunction(){
+	alert("called newproducts");
+	$.post( "/donuts", { type: "new"})
+    .done(function( data_return ) {
+    alert( "products Loaded: " + data_return );
+
+
+$('#data').html("mwmwmw");
+
+	var obj = JSON.parse(s);
+$('#data').html(s);
+
+var searchValue = "product";
+
+
+// loop through the elements
+for (var i = 0; i < elements.length; i++) {
+    if (elements[i].innerHTML.indexOf(product) > -1) {
+        alert('found'); // popup
+    }
+}
+
+
+    
+
+
+
+});
+}  
+
+
+
+
+
+	</script>
+
+
+<!-- loop through the order list and insert checked ones to productOrdered DIV -->
+<script>
+	function myFunction() {
+		console.log("inside myfunction");
+		var txt = "";
+	  var i;
+		for (i = 0; i < 12; i++) {
+    if (myRadio[i].checked) {
+		txt = txt + myRadio[i].value + " ";
+		alert("Added "+myRadio[i].value+"to your Order List");
+		document.getElementById("productOrdered").value =  txt;
+    }
+  }
+
+
+
+
+	  document.getElementById("productOrdered").value =  txt;
+	}
+	</script>
+	
+
+<script>	</script>
+
+</html>
+
+
