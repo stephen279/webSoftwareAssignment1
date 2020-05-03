@@ -21,6 +21,8 @@ class BackendController extends AbstractController
     public function __construct(SessionInterface $session)
     {
         $this->session = $session;
+      //  echo 'the session username is ' . $username_sess;
+      //  echo 'the session username is ' . $username_sess;
     }
 
 
@@ -45,7 +47,23 @@ if($type == 'register'){
 
 
     
+            $repo = $this->getDoctrine()->getRepository(Login::class);  //type of the entity
 
+            $person = $repo->findOneBy([
+                'username' => $username,
+                'password' => $password
+
+            ]);
+         
+         if  ($person!==''){
+            return new Response(
+              ' there is already account with this email '
+  
+            );
+
+            // test your input function pass in the inuts
+
+          }  
 
 
             //put into databse
@@ -60,33 +78,57 @@ if($type == 'register'){
 
             $entityManager->flush();
            
-           
+         //   return $this->render('index.html.twig'); 
 
-
+      //   return new RedirectResponse('http://your.google.com');
 
         return new Response(
-            'register page was called'
+
+         
+        //  RedirectResponse('http://your.google.com')
+          'New Account was saved'
+         //   return $this->render('index.html.twig')
         );
     }
 
+
+
+
     else if($type == 'login'){
+
+
+     // $name =  $email = $gender = $comment = $website = "";
      
-   
+      $username = $request->request->get('username', 'this is username');
+      $password = $request->request->get('password', 'this is password');
+      if (empty($username)||empty($username)) {
+  
+        return new Response(
+          'Email and Password is required please'
+      );
+     
+      } else {
 
-            $username = $request->request->get('username', 'this is username');
-            $password = $request->request->get('password', 'this is password');
+       $username  = trim($username );
+       $username = stripslashes($username );
+       $username  = htmlspecialchars($username );
+        
+       $password  = trim($password );
+       $password = stripslashes($password );
+       $password  = htmlspecialchars($password );
 
-
-
+     
 
             //set user session
                       // stores an attribute in the session for later reuse
-                      $this->session->set('username_sess',  $username);
+         $this->session->set('username_sess',  $username);
 
                       // gets an attribute by name
-                    //  $username_sess = $this->session->get('username_sess');
-                      //echo 'the session username is ' . $username_sess;
+         $foo = $this->session->get('username_sess');
 
+       
+        
+        
            
 
             $repo = $this->getDoctrine()->getRepository(Login::class);  //type of the entity
@@ -97,53 +139,118 @@ if($type == 'register'){
 
             ]);
          
-
+         if  ($person==''){
             return new Response(
-               $person->getAcctype()
-            //'login page was called'
-             //   'login' . var_dump($person)
+              ' No Account record please register then login '
+  
             );
 
+            // test your input function pass in the inuts
 
-    }
+          }  
+
+          
+
+            return new Response(
+           
+            $person->getAcctype()
+     // $foo
+    
+           );
+
+           
+
+        }
+
+      
+      }
+    
+
+
+    else if($type == 'logout'){
+alert("inside type ogged out");
+   
+             //set user session
+                       // stores an attribute in the session for later reuse
+          $session->clear();
+ 
+        
+         
+         
+         
+           
+ 
+             return new Response(
+            
+            'logged out'
+      // $foo
+     
+            );
+ 
+            
+ 
+         }
+ 
+     
+ 
+ 
+
+
+
+
 
     else if($type == 'products'){
-     
+
+
+      // if not logged in and no session products wont diplay
+      $foo = $this->session->get('username_sess');
+      if ($foo){
+
 
      //  $repo = $this->getDoctrine()->getRepository(Login::class);
     $bk = $this->getDoctrine()
     ->getRepository(Donut::class) 
     ->findAll(); 
-    return $this->render('display.html.twig', array('data' => $bk)); 
+    $res = $this->renderView('display.html.twig', array('data' => $bk)); 
 
         return new Response(
      
         //   $myJSON;  
-        'in products'
+        $foo . $res
     
           ); 
         
+        }
 
+        return new Response(
+     
+          //   $myJSON;  
+         'please log in to see products'
+      
+            ); 
 
 }
 
 else if($type == 'displayorders'){
    
-
+  $foo = $this->session->get('username_sess');
+  if ($foo){
   //  $repo = $this->getDoctrine()->getRepository(Login::class);
  $or = $this->getDoctrine()
  ->getRepository(Orders::class) 
  ->findAll(); 
- return $this->render('displayOrder.html.twig', array('data' => $or)); 
+ $res = $this->renderView('displayOrder.html.twig', array('data' => $or)); 
 
      return new Response(
+
+      $foo . $res
   
      //   $myJSON;  
-     'in else if displayorder'
+   //  'in else if displayorder'
  
        ); 
      
-
+      }
 
 }
 
