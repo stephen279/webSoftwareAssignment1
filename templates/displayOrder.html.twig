@@ -1,104 +1,62 @@
 {% extends 'base.html.twig' %} 
 {% block stylesheets %} 
-   <style> 
-      .table { border-collapse: collapse; } 
-      .table th, td { 
-         border-bottom: 1px solid #ddd; 
-         width: 250px; 
-         text-align: left; 
-         align: left; 
-      } 
-
-
-      #simpleform { 
-         width:600px; 
-         border:2px solid grey; 
-         padding:14px; 
-      } 
-      #simpleform label { 
-         font-size:14px; 
-         float:left; 
-         width:300px; 
-         text-align:right; 
-         display:block; 
-      } 
-      #simpleform span { 
-         font-size:11px; 
-         color:grey;
-         width:100px; 
-         text-align:right; 
-         display:block; 
-      }  
-      #simpleform input { 
-         border:1px solid grey; 
-         font-family:verdana; 
-         font-size:14px; 
-         color:light blue; 
-         height:24px; 
-         width:250px; 
-         margin: 0 0 10px 10px; 
-      }  
-      #simpleform textarea { 
-         border:1px solid grey; 
-         font-family:verdana; 
-         font-size:14px; 
-         color:light blue; 
-         height:120px; 
-         width:250px; 
-         margin: 0 0 20px 10px; 
-      }  
-      #simpleform select { 
-         margin: 0 0 20px 10px; 
-      } 
-      #simpleform button { 
-         clear:both; 
-         margin-left:250px; 
-         background: grey;
-         color:#FFFFFF; 
-         border:solid 1px #666666; 
-         font-size:16px; 
-      } 
-   
-   </style> 
+<link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000:/css/style" /> 
 {% endblock %}   
 {% block body %} 
-   <h3>Here are all The orders. Dont forget to look at the weather!!!</h3>  
-   <table class = "table">  
+   <h3>Here are all The orders</h3>  
+   <table class = "table" id="table">  
       <tr>  
+         <th>Order id</th>  
          <th>products ordered</th>  
          <th>total cost</th>  
          <th>username</th>  
+         <th>Status</th>  
       </tr>  
       {% for x in data %} 
       <tr>  
-        <div class="radio">
-            <label><input type="radio"  id='myRadio' value = {{ x.productsordered }}>{{ x.productsordered }}</label>
-       </div>
-         <td>{{ x.productsordered }}</td>   
+      
+       <div id = "orderId">
+       <td>{{ x.id }}</td>
+      </div>
+         <td><label><input type="radio"  id='myRadio' value = {{ x.productsordered }}>{{ x.productsordered }}</label></td>   
          <td>{{ x.totalcost }}</td>
          <td>{{ x.username }}</td>  
+         <td>{{ x.status }} </td>
+<td><button class="btnSelect">Complete Order</button></td> 
+
+       
       </tr>  
       {% endfor %} 
-   </table>
+    
+       
+       
+       
+       <script>
+       $(document).ready(function(){
+            $("#table").on('click', '.btnSelect', function() {
+             // get the current row
+             var currentRow = $(this).closest("tr");
+       
+             var col1 = currentRow.find("td:eq(0)").html(); // get current row 1st table cell TD value
+             var col2 = currentRow.find("td:eq(1)").html(); // get current row 2nd table cell TD value
+             var col3 = currentRow.find("td:eq(2)").html(); // get current row 3rd table cell  TD value
+             var data = col1;
+       
+             alert(data);
 
+            	
+         
 
+            $.post( "/backend", { type: "updateorders", updateproductsordered:data })
+            .done(function( data ) {
+             alert("updated Order to status Complete ");
+             });
 
-
-
-
-
-
-
-{% endblock %}    
-{% block my_javascripts %}
-
-<script>
-    function myFunction() {
-    alert ("checked")
-      document.getElementById("fname").value = document.getElementById("fname").value.toUpperCase();
-    }
-    </script>
-
+           });
+       
+        });
+        
+       </script>
 
 
 {% endblock %}

@@ -37,7 +37,7 @@ public function new(Request $request) {
     $donut = new donut(); 
     $form = $this->createFormBuilder($donut) 
        ->add('name', TextType::class) 
-       ->add('author', TextType::class) 
+       ->add('description', TextType::class) 
        ->add('price', TextType::class) 
        ->add('save', SubmitType::class, array('label' => 'Submit')) 
        ->getForm();  

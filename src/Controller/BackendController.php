@@ -57,7 +57,7 @@ if($type == 'register'){
          
          if  ($person!==''){
             return new Response(
-              ' there is already account with this email '
+              ' there is already account with this '
   
             );
 
@@ -92,7 +92,7 @@ if($type == 'register'){
     }
 
 
-
+////////////////////////////  LOGIN ///////////////////////////////////////////////
 
     else if($type == 'login'){
 
@@ -149,8 +149,6 @@ if($type == 'register'){
 
           }  
 
-          
-
             return new Response(
            
             $person->getAcctype()
@@ -165,20 +163,15 @@ if($type == 'register'){
       
       }
     
-
+////////////////////////////////////////////// LOGOUT ////////////////////////////////////////////////////
 
     else if($type == 'logout'){
-alert("inside type ogged out");
+
    
              //set user session
                        // stores an attribute in the session for later reuse
           $session->clear();
  
-        
-         
-         
-         
-           
  
              return new Response(
             
@@ -194,6 +187,7 @@ alert("inside type ogged out");
      
  
  
+////////////////////////////////////////////// PORDUCTS ////////////////////////////////////////////////////
 
 
 
@@ -216,7 +210,7 @@ alert("inside type ogged out");
         return new Response(
      
         //   $myJSON;  
-        $foo . $res
+        'Account' .' '.$foo . $res
     
           ); 
         
@@ -231,7 +225,12 @@ alert("inside type ogged out");
 
 }
 
+////////////////////////////////////////////// DISPLAYORDERS  ////////////////////////////////////////////////////
+
+
+
 else if($type == 'displayorders'){
+  
    
   $foo = $this->session->get('username_sess');
   if ($foo){
@@ -243,7 +242,7 @@ else if($type == 'displayorders'){
 
      return new Response(
 
-      $foo . $res
+      'Account'. $foo . $res
   
      //   $myJSON;  
    //  'in else if displayorder'
@@ -257,24 +256,55 @@ else if($type == 'displayorders'){
 
 
 
+////////////////////////////////////////////// DISPLAYonecustomerORDER ////////////////////////////////////////////////////
+
+
+
+else if($type == 'displayOneorder'){
+
+   
+  $foo = $this->session->get('username_sess');
+  if ($foo){
+  //  $repo = $this->getDoctrine()->getRepository(Login::class);
+ 
+  $or = $this->getDoctrine()->getRepository(Orders::class);  //type of the entity
+
+  //->findAll();
+
+  // look for multiple Product objects matching the name, ordered by price
+  $prod = $or->findBy(['username' => 's@m.com']
+);
+  //echo $or->getProductsordered();
+ $res = $this->renderView('displayOrder.html.twig', array('data' => $prod)); 
+
+     return new Response(
+
+      'Account' .' '. $foo . $res
+  
+     //   $myJSON;  
+   //  'in else if displayorder'
+ 
+       ); 
+     
+      }
+
+}
+
+
+////////////////////////////////////////////// ORDER    ////////////////////////////////////////////////////
+
+
 else if($type == 'orders'){
 
-        $username_sess = $this->session->get('username_sess');
-       //echo 'the session username is ' . $username_sess;
+  $username_sess = $this->session->get('username_sess');
+
 
   // catch the username
   $po = $request->request->get('productsordered', 'this is product');
 
- // echo"insideOrders";
-
 
   //$un = $request->request->get('username', 'this is username');
   //$acctype = $request->request->get('acctype','none');
-
-
-
-
-
 
   //put into databse
   $entityManager = $this->getDoctrine()->getManager();
@@ -297,6 +327,58 @@ return new Response(
   'orders page was called'
 );
 }
+
+
+    
+
+
+////////////////////////////////////////////// ORDER    ////////////////////////////////////////////////////
+
+
+else if($type == 'updateorders'){
+
+   echo "owijdowqdvpiuqwhpiuqhwprifuhqwpiuhfpqiwf";
+  
+
+  $username_sess = $this->session->get('username_sess');
+
+
+  // catch the username
+  $po = $request->request->get('updateproductsordered', 'this is update product');
+
+
+  $entityManager = $this->getDoctrine()->getManager();
+  $product = $entityManager->getRepository(Orders::class)->find($po );
+
+  if (!$product) {
+      throw $this->createNotFoundException(
+          'No product found for id '.$id
+      );
+  }
+
+  $product->setStatus('Complete');
+  $entityManager->flush();
+
+  return $this->redirectToRoute('product_show', [
+      'id' => $product->getId()
+  ]);
+
+
+ 
+
+
+
+return new Response(
+  
+);
+}
+
+
+
+
+
+////////////////////////////////////////////// NEW    ////////////////////////////////////////////////////
+
 
 
 else if($type == 'new'){

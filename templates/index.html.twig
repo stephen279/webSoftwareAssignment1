@@ -107,6 +107,12 @@
 
 </div>
 
+
+
+
+
+<!--  Strart of register page ------->
+
 <div data-role="page" id="register" data-theme="a">
 
 <div data-role="header">
@@ -119,8 +125,8 @@
        Username <input type="text" name="username" id="username" value="">
        Password <input type="text" name="pass" id="pass" value="">
        Acctype <input type="text" name="acctype" id="acctype" value="">
-<button class="ui-btn" id="registeredButton">Submit</button>
-	
+	   <button class="ui-btn" id="registeredButton">Submit</button>
+<li><a href="#/index">LogIn</a></li>
 	</div><!-- /content --->
 </div>
 
@@ -176,7 +182,7 @@
 			<li><a href="#/index">Home</a></li>
 			<li><a href="#/weather/index">Get the Weather forcast !!!!!!!!!!!!!!</a></li>
 		
-		
+			<button class="ui-btn" id="btnSelect">Submit</button>
 	  </ul>
 	</div>
   </nav>
@@ -187,7 +193,7 @@
 				<h1>Driver page!</h1>
 			</div><!-- /header -->
 			
-		
+	
 <div id="data1"></div>
 		
 </div>
@@ -251,16 +257,38 @@
 				   Your Order List <input type="text" name="productOrdered" id="productOrdered" value="">
 				  
 			<button class="ui-btn" id="orderButton">Send Order</button>		
-				
+
+
+			<div id = "data4"> <p>Your Orders</p> </div>	
 		</body>
 
-
+	
 	
 </div>	
 
 </html>
 
-<!---  Start of the javascript functions ---------->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--------------  Start of the javascript functions ------------------------>
 
 <script>
 
@@ -273,21 +301,22 @@ $( "#loginButton" ).click(function() {
 
     $.post( "/backend", { type: "login", username:un, password:pw})
     .done(function( data ) {
-    alert( "Type of Account is: " + data );
+   
 
 	if (data == 'customer'){
 			window.location="/index#customer";
 			document.getElementById("data2").innerHTML = window.productsFunction();
+			document.getElementById("data4").innerHTML = window.displayOneordersFunction();
 		
 	}else if(data == 'driver'){
-			alert("inside driver");
+		
 			window.location="/index#driver";
 			document.getElementById("data1").innerHTML = window.displayordersFunction();
 
 
 	}else if(data == 'manager'){
-		window.location="/index#manager";
-		document.getElementById("data").innerHTML = window.productsFunction();
+			window.location="/index#manager";
+			document.getElementById("data").innerHTML = window.productsFunction();
 		
 		
 	}
@@ -311,28 +340,30 @@ $( "#loginButton" ).click(function() {
 
     $.post( "/backend", { type: "register", username:un, password:pw, acctype:ac})
     .done(function( data ) {
-    alert( "Data Loaded: " + data );
-  });
+  
+  		});
 
     });
+
+
 
 
 	
     $( "#orderButton" ).click(function() {
-		alert("inside irderButton");
+	
 		
     var po = $("#productOrdered").val();
     console.log(po);
 
-	alert( "Processing order: "+ po);
-   
-
     $.post( "/backend", { type: "orders", productsordered:po })
     .done(function( data ) {
-    alert( "product saved : " + data );
+  	alert("Productuct Ordered");
   });
 
     });
+
+
+////////////////////order table  clicked //////////////////////
 
 
 
@@ -344,7 +375,6 @@ function productsFunction(){
 
 	$.post( "/backend", { type: "products"})
     .done(function( data_return ) {
-alert (data_return);
 
 
 $('#data2').html(data_return);
@@ -362,16 +392,12 @@ var searchValue = "product";
 
 function displayordersFunction(){
 
-alert("inside displayorders function");
+
 	$.post( "/backend", { type: "displayorders"})
     .done(function( data_return ) {
 
-alert(data_return);
-
 $('#data1').html(data_return);
 
-
-var searchValue = "product";
 
 
 
@@ -379,11 +405,30 @@ var searchValue = "product";
 }   
 
 
+function displayOneordersFunction(){
+
+
+	$.post( "/backend", { type: "displayOneorder"})
+    .done(function( data_return ) {
+
+
+$('#data4').html(data_return);
+
+
+
+
+
+});
+}   
+
+
+
+
 function newProductsFunction(){
-	alert("called newproducts");
+	
 	$.post( "/donuts", { type: "new"})
     .done(function( data_return ) {
-    alert( "products Loaded: " + data_return );
+
 
 
 $('#data').html("");
@@ -397,13 +442,9 @@ var searchValue = "product";
 // loop through the elements
 for (var i = 0; i < elements.length; i++) {
     if (elements[i].innerHTML.indexOf(product) > -1) {
-        alert('found'); // popup
+    
     }
 }
-
-
-
-
 });
 }  
 
@@ -411,22 +452,30 @@ for (var i = 0; i < elements.length; i++) {
 
 
 
-	</script>
-
-
-<!-- loop through the order list and insert checked ones to productOrdered DIV -->
-<script>
 	function myFunction() {
 		console.log("inside myfunction");
 		var txt = "";
 	  var i;
-		for (i = 0; i < 12; i++) {
+		for (i = 0; i < 40; i++) {
     if (myRadio[i].checked) {
 		txt = txt + myRadio[i].value + " ";
-		alert("Added "+myRadio[i].value+"to your Order List");
+
 		document.getElementById("productOrdered").value =  txt;
     }
   }
+
+
+
+
+
+
+
+
+ 
+
+
+
+
 
 
 
@@ -439,6 +488,21 @@ for (var i = 0; i < elements.length; i++) {
 	<!--load on refresh on page-->
 <script>document.getElementById("data2").innerHTML = window.productsFunction();	</script>
 <script>document.getElementById("data1").innerHTML = window.displayordersFunction();	</script>
+<script>document.getElementById("data4").innerHTML = window.displayOneordersFunction();</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </html>
 

@@ -24,7 +24,7 @@ class Donut
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $author;
+    private $description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -48,14 +48,14 @@ class Donut
         return $this;
     }
 
-    public function getAuthor(): ?string
+    public function getdescription(): ?string
     {
-        return $this->author;
+        return $this->description;
     }
 
-    public function setAuthor(?string $author): self
+    public function setdescription(?string $description): self
     {
-        $this->author = $author;
+        $this->description = $description;
 
         return $this;
     }

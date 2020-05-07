@@ -66,7 +66,7 @@
    <table class = "table">  
       <tr>  
          <th>Name</th>  
-         <th>Author</th>  
+         <th>description</th>  
          <th>Price</th>  
       </tr>  
       {% for x in data %} 
@@ -75,7 +75,7 @@
             <label><input type="radio"  id='myRadio' value = {{ x.Name }}>{{ x.Name }}</label>
        </div>
          <td>{{ x.Name }}</td>   
-         <td>{{ x.Author }}</td>
+         <td>{{ x.description }}</td>
          <td>{{ x.Price }}</td>  
       </tr>  
       {% endfor %} 
