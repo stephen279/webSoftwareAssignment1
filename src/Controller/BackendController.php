@@ -96,7 +96,6 @@ if($type == 'register'){
 
     else if($type == 'login'){
 
-
      // $name =  $email = $gender = $comment = $website = "";
      
       $username = $request->request->get('username', 'this is username');
@@ -140,6 +139,7 @@ if($type == 'register'){
             ]);
          
          if  ($person==''){
+          
             return new Response(
               ' No Account record please register then login '
   
@@ -150,7 +150,7 @@ if($type == 'register'){
           }  
 
             return new Response(
-           
+              
             $person->getAcctype()
      // $foo
     
@@ -242,7 +242,7 @@ else if($type == 'displayorders'){
 
      return new Response(
 
-      'Account'. $foo . $res
+      'Account'.' '. $foo . $res
   
      //   $myJSON;  
    //  'in else if displayorder'
@@ -313,6 +313,7 @@ else if($type == 'orders'){
   //$login->setUsername($username);
   $order->setProductsordered($po);
   $order->setUsername($username_sess);
+  $order->setStatus("Open");
   //$login->setAccType($acctype);
 
   $entityManager->persist($order);
@@ -337,7 +338,6 @@ return new Response(
 
 else if($type == 'updateorders'){
 
-   echo "owijdowqdvpiuqwhpiuqhwprifuhqwpiuhfpqiwf";
   
 
   $username_sess = $this->session->get('username_sess');

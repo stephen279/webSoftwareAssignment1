@@ -10,6 +10,8 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 
 </head>
@@ -134,23 +136,74 @@
 <!----------   Stary of Manager page --------------->
 
 <div data-role="page" id="manager" data-theme="a">
-	<div data-role="header">
-			<h1>Manager page </h1>
-		</div id = "data">
-		<ul>
-			<li><a href="#/index">Home</a></li>
-			<li><a href="#/donuts/new">Add new Product</a></li>
-			<li><a href="#/weather/index">Display Weather </a></li>
+	<head>
 		
-		  </ul>
+		<body >
+		<title>Manager</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-<p> At the moment Manager can see the weather , Add a new product to the product list</p> <br>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+		
+		
+	  </head>
+	  <body>
+	  
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+			  <div class="navbar-header">
+				<a class="navbar-brand" href="#">WebSoftwareAssignment</a>
+				<a href="#/index">Home</a>
+			  </div>
+			  <ul class="nav navbar-nav">
+				
+				<li>
+				<button class="btn btn-primary"  id="logoutButton">Logout</button>
+		
+			
+			  </ul>
+			</div>
+		  </nav>
 
-<p> will be adding function here to see the order income etc......</p>
+		  <script>
+			var newArray = document.getElementById("data81").innerHTML;
+			alert(newArray);
+			
+			</script>
+		  
+<div class="container">
+
+	<div data-role="header">
+		<h1>Manager page!</h1>
+		
+	</div><!-- /header -->
 	
+
+<div id="data1"></div>
+<!--  chart div -->
+<div id="data81"></div>
+<div id="data91"></div>
+<canvas id="myChart" width="400" height="400"></canvas>
+
+
+</div>
+
+
+
+
+
 
 
 	</div>
+
+	<script>
+	
+		
+		</script>
+
 
 	</div>
 
@@ -172,20 +225,21 @@
   </head>
   <body>
   
-  <nav class="navbar navbar-default">
-	<div class="container-fluid">
-	  <div class="navbar-header">
-		<a class="navbar-brand" href="#">Web software assignment</a>
-	  </div>
-	  <ul class="nav navbar-nav">
-		<ul></ul>
-			<li><a href="#/index">Home</a></li>
-			<li><a href="#/weather/index">Get the Weather forcast !!!!!!!!!!!!!!</a></li>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+		  <div class="navbar-header">
+			<a class="navbar-brand" href="#">WebSoftwareAssignment</a>
+			<a href="#/index">Home</a>
+		  </div>
+		  <ul class="nav navbar-nav">
+			
+			<li>
+			<button class="btn btn-primary"  id="logoutButton">Logout</button>
+	
 		
-			<button class="ui-btn" id="btnSelect">Submit</button>
-	  </ul>
-	</div>
-  </nav>
+		  </ul>
+		</div>
+	  </nav>
 
 <div class="container">
 
@@ -194,7 +248,7 @@
 			</div><!-- /header -->
 			
 	
-<div id="data1"></div>
+<div id="data5"></div>
 		
 </div>
 </body>
@@ -214,31 +268,39 @@
 		<body >
 		<title>Customer</title>
 		<meta charset="utf-8">
+		
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-		<button class="ui-btn" id="logoutButton">Logout</button>
+	
 	  </head>
 	  <body>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+			  <div class="navbar-header">
+				<a class="navbar-brand" href="#">WebSoftwareAssignment</a>
+				<a href="#/index">Home</a>
+			  </div>
+			  <ul class="nav navbar-nav">
+				
+				<li>
+				<button class="btn btn-primary"  id="logoutButton">Logout</button>
+		
+			
+			  </ul>
+			</div>
+		  </nav>
+			
+
+
+
 	  
-	  <nav class="navbar navbar-default">
-		<div class="container-fluid">
-		  <div class="navbar-header">
-			<a class="navbar-brand" href="#">Web Software symfony assignment</a>
-		  </div>
-		  <ul class="nav navbar-nav">
-			<ul></ul>
-			<li><a href="#/index">Home</a></li>		
-			<li><a href="#/index">List my orders</a></li>		
-		  </ul>
-		</div>
-	  </nav>
 
 		    <div class="container">
 
 				<div data-role="header">
-					<h1>Customer</h1>
+					<h1>Customer Page</h1>
 				</div><!-- /header -->
 				
 				  <div id = "data2"> <p>Please Log in</p> </div>
@@ -248,23 +310,29 @@
 				<form action="">
 			
 					<br>
-					<input type="button" onclick="myFunction()" value="add to order list">
+					<input type="button" class="ui-btn" onclick="myFunction()" value="add to order list + ">
 					<br><br>
 		
 				  </form>
 				
 					
 				   Your Order List <input type="text" name="productOrdered" id="productOrdered" value="">
+				   Total Cost <input type="text" name="totalCost" id="totalCost" value="">
 				  
-			<button class="ui-btn" id="orderButton">Send Order</button>		
+			<button class="btn btn-primary" id="orderButton">Send Order</button>		
 
 
 			<div id = "data4"> <p>Your Orders</p> </div>	
+			<div id = "data14"> <p>loop</p> </div>	
+		
 		</body>
 
 	
 	
 </div>	
+<div data-role="footer">
+	<h1>WebSoftwareAssignment</h1>
+</div><!-- /header -->
 
 </html>
 
@@ -301,7 +369,8 @@ $( "#loginButton" ).click(function() {
 
     $.post( "/backend", { type: "login", username:un, password:pw})
     .done(function( data ) {
-   
+		//Alert out the error message retirned from the login 
+   	alert(data);
 
 	if (data == 'customer'){
 			window.location="/index#customer";
@@ -316,7 +385,7 @@ $( "#loginButton" ).click(function() {
 
 	}else if(data == 'manager'){
 			window.location="/index#manager";
-			document.getElementById("data").innerHTML = window.productsFunction();
+		//	document.getElementById("data5").innerHTML = window.displayOneordersFunction();
 		
 		
 	}
@@ -363,7 +432,53 @@ $( "#loginButton" ).click(function() {
     });
 
 
+
+	$("#completeChart").click(function(){
+		//var newArray1 = [4,1];
+		 newArray1 = document.getElementById("data81").value;
+		alert("inside chart script")
+		alert(newArray1);
+		
+		var ctx = document.getElementById('myChart').getContext('2d');
+		var myChart = new Chart(ctx, {
+			
+			type: 'bar',
+			data: {
+				labels: ['Open', 'Complete'],
+				datasets: [{
+					label: '# Status',
+					data: newArray1 ,
+					backgroundColor: [
+					
+						'rgba(153, 102, 255, 0.2)',
+						'rgba(255, 159, 64, 0.2)'
+					],
+					borderColor: [
+					
+						'rgba(153, 102, 255, 1)',
+						'rgba(255, 159, 64, 1)'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+		});
+
+
+
+	});
+
+
 ////////////////////order table  clicked //////////////////////
+
 
 
 
@@ -390,19 +505,119 @@ var searchValue = "product";
 
 
 
+///////////////////////////////////////displayorders and chart /////////////////////////
+
+var tdValue ;	
 function displayordersFunction(){
 
 
 	$.post( "/backend", { type: "displayorders"})
     .done(function( data_return ) {
+		
+		
 
 $('#data1').html(data_return);
 
+var Statusarray = []; //set up empty array
+var CompleteArray = [];
+var OpenArray = [];
 
+for (i=0;i<td.length ; i++){
+tdValue = td[i].innerHTML;
+
+Statusarray.push(tdValue)
+
+
+			
+$('#data81').html(Statusarray);
+
+
+
+	
+
+}
+
+/////////GET DIV ELEMENT VALUES TO PASS TO CHART /////////////////
+
+var allData = document.getElementById("data81").innerHTML ;
+
+//  PUSH TO ARRAY THEN GET INDEX COUNT
+
+var resOpen = allData.match(/Open/gi);
+var resOpen = resOpen.toString();
+OpenArray.push(resOpen);
+
+var resComplete = allData.match(/Complete/gi);
+var resComplete= resComplete.toString();
+OpenArray.push(resComplete);
+
+
+  var Openres = resOpen.split(",");
+//  alert(Openres.length);
+//  PUSH TO ARRAY THEN GET INDEX COUNT
+var Completeres = resComplete.split(",");
+//  alert(Completeres.length);
+
+  CompleteArray.push(Openres.length,Completeres.length);
+  alert(CompleteArray);
+
+  document.getElementById("data81").innerHTML = CompleteArray;
+
+
+
+
+  newArray1 = document.getElementById("data81").value;
+
+
+		///CHART PART
+		
+		var ctx = document.getElementById('myChart').getContext('2d');
+		var myChart = new Chart(ctx, {
+			
+			type: 'bar',
+			data: {
+				labels: ['Open', 'Complete'],
+				datasets: [{
+					label: '# Status',
+					data: CompleteArray ,
+					backgroundColor: [
+						'rgba(255, 99, 132, 0.2)',
+						'rgba(54, 162, 235, 0.2)',
+						'rgba(255, 206, 86, 0.2)',
+						'rgba(75, 192, 192, 0.2)',
+						'rgba(153, 102, 255, 0.2)',
+						'rgba(255, 159, 64, 0.2)'
+					],
+					borderColor: [
+						'rgba(255, 99, 132, 1)',
+						'rgba(54, 162, 235, 1)',
+						'rgba(255, 206, 86, 1)',
+						'rgba(75, 192, 192, 1)',
+						'rgba(153, 102, 255, 1)',
+						'rgba(255, 159, 64, 1)'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+		});
 
 
 });
-}   
+}  
+
+
+
+
+
 
 
 function displayOneordersFunction(){
@@ -484,11 +699,12 @@ for (var i = 0; i < elements.length; i++) {
 	}
 	</script>
 	
-
+	
 	<!--load on refresh on page-->
 <script>document.getElementById("data2").innerHTML = window.productsFunction();	</script>
 <script>document.getElementById("data1").innerHTML = window.displayordersFunction();	</script>
 <script>document.getElementById("data4").innerHTML = window.displayOneordersFunction();</script>
+<script>document.getElementById("data5").innerHTML = window.displayOneordersFunction();</script>
 
 
 

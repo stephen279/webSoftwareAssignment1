@@ -32,7 +32,7 @@ class Orders
     private $username;
 
   /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, options={"default" : "Open"})
      */
     private $status;
 
