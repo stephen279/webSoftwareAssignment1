@@ -64,7 +64,7 @@ class Orders
 
     public function setTotalcost(string $totalcost): self
     {
-        $this->productsordered = $productsordered;
+        $this->totalcost = $totalcost;
 
         return $this;
     }

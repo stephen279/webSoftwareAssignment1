@@ -163,20 +163,20 @@ if($type == 'register'){
       
       }
     
-////////////////////////////////////////////// LOGOUT ////////////////////////////////////////////////////
+
 
     else if($type == 'logout'){
-
+     
    
-             //set user session
-                       // stores an attribute in the session for later reuse
-          $session->clear();
- 
+             //clear user session
+          // stores an attribute in the session for later reuse
+         // $session->clear();
+          $this->session->set('username_sess',  "");
  
              return new Response(
             
-            'logged out'
-      // $foo
+            'session cleared and logged out'
+     
      
             );
  
@@ -301,6 +301,7 @@ else if($type == 'orders'){
 
   // catch the username
   $po = $request->request->get('productsordered', 'this is product');
+  $tc = $request->request->get('totalcost', 'this is the cost');
 
 
   //$un = $request->request->get('username', 'this is username');
@@ -312,6 +313,7 @@ else if($type == 'orders'){
   $order = new Orders();
   //$login->setUsername($username);
   $order->setProductsordered($po);
+  $order->setTotalcost($tc);
   $order->setUsername($username_sess);
   $order->setStatus("Open");
   //$login->setAccType($acctype);
@@ -338,7 +340,6 @@ return new Response(
 
 else if($type == 'updateorders'){
 
-  
 
   $username_sess = $this->session->get('username_sess');
 
@@ -357,20 +358,23 @@ else if($type == 'updateorders'){
   }
 
   $product->setStatus('Complete');
+ 
   $entityManager->flush();
+  return new Response(
+    'status is changed to complete'
+  );
 
   return $this->redirectToRoute('product_show', [
       'id' => $product->getId()
   ]);
 
 
+
+  
  
 
 
 
-return new Response(
-  
-);
 }
 
 

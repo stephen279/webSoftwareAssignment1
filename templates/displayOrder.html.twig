@@ -22,7 +22,7 @@
          <td>{{ x.totalcost }}</td>
          <td>{{ x.username }}</td>  
          <td id="td">{{ x.status }} </td>
-<td><button class="btnSelect">Complete Order</button></td> 
+<td><button class="btnSelect">Complete Orders</button></td> 
 
        
       </tr>  
@@ -33,8 +33,9 @@
        
        <script>
        $(document).ready(function(){
-            $("#table").on('click', '.btnSelect', function() {
+            $(".table").on('click', '.btnSelect', function() {
              // get the current row
+            // alert("button pressed");
              var currentRow = $(this).closest("tr");
        
              var col1 = currentRow.find("td:eq(0)").html(); // get current row 1st table cell TD value
@@ -42,14 +43,14 @@
              var col3 = currentRow.find("td:eq(2)").html(); // get current row 3rd table cell  TD value
              var data = col1;
        
-             alert(data);
+           //  alert(data);
 
             	
          
 
             $.post( "/backend", { type: "updateorders", updateproductsordered:data })
             .done(function( data ) {
-             alert("updated Order to status Complete ");
+             alert(data);
              });
 
            });

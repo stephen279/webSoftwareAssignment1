@@ -63,16 +63,16 @@
 {% endblock %}   
 {% block body %} 
    <h3>Please Check a donut and then send to order</h2>  
-   <table class = "table">  
+   <table class = "table" id="table">  
       <tr>  
-         <th>Name</th>  
+         <th>Names</th>  
          <th>description</th>  
          <th>Price</th>  
       </tr>  
       {% for x in data %} 
       <tr>  
         <div class="radio">
-            <label><input type="radio"  id='myRadio' value = {{ x.Name }}>{{ x.Name }}</label>
+           <input type="radio"  id='myRadio' value = {{ x.Name },{ x.Price }}>{{ x.Name }}
        </div>
          <td>{{ x.Name }}</td>   
          <td>{{ x.description }}</td>

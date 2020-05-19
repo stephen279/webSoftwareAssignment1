@@ -26,9 +26,11 @@
 		<h1>Multi-page-for Login/Signup</h1>
 	</div><!-- /header -->
 
+	
+
 	<div role="main" class="ui-content">
 		<h2>Welcome to my Web Software assignment!</h2>
-
+	
 		<br>
         Welcome to the application, login or register.
 
@@ -67,6 +69,7 @@
 <div data-role="page" id="popup">
 
 	<div data-role="header" data-theme="b">
+		
 		<h1>Dialog</h1>
 	</div><!-- /header -->
 
@@ -88,6 +91,7 @@
 
 <div data-role="page" id="login" data-theme="a">
 <div data-role="header">
+	
 		<h1>Login page</h1>
 	</div><!-- /header -->
 
@@ -97,6 +101,7 @@
     Password <input type="text" name="login_pass" id="login_pass" value="">
 
 <button class="ui-btn" id="loginButton">Submit</button>
+
 
 <h4>Login credentials</h4><br>
 <p>  User password  AccType </p>
@@ -122,12 +127,13 @@
 	</div><!-- /header -->
 
 <div role="main" class="ui-content"> 
-		<h2>Two</h2>
-        
+		<h2>Register</h2>
+      
        Username <input type="text" name="username" id="username" value="">
        Password <input type="text" name="pass" id="pass" value="">
        Acctype <input type="text" name="acctype" id="acctype" value="">
 	   <button class="ui-btn" id="registeredButton">Submit</button>
+	   
 <li><a href="#/index">LogIn</a></li>
 	</div><!-- /content --->
 </div>
@@ -137,7 +143,7 @@
 
 <div data-role="page" id="manager" data-theme="a">
 	<head>
-		
+		<button class="btn btn-primary"  id="logoutButton">Logouts</button>
 		<body >
 		<title>Manager</title>
 		<meta charset="utf-8">
@@ -170,7 +176,7 @@
 
 		  <script>
 			var newArray = document.getElementById("data81").innerHTML;
-			alert(newArray);
+		//	alert(newArray);
 			
 			</script>
 		  
@@ -230,6 +236,7 @@
 		  <div class="navbar-header">
 			<a class="navbar-brand" href="#">WebSoftwareAssignment</a>
 			<a href="#/index">Home</a>
+			<li><a href="#/weather/index">Get the Weather forcast !!!!!!!!!!!!!!</a></li>
 		  </div>
 		  <ul class="nav navbar-nav">
 			
@@ -256,6 +263,8 @@
 </div>
 
 
+		
+		
 
 
 
@@ -264,7 +273,7 @@
 		
 <div data-role="page" id="customer" data-theme="a">
 	<head>
-		
+	
 		<body >
 		<title>Customer</title>
 		<meta charset="utf-8">
@@ -276,16 +285,18 @@
 	
 	  </head>
 	  <body>
+	
 		<nav class="navbar navbar-default">
 			<div class="container-fluid">
 			  <div class="navbar-header">
 				<a class="navbar-brand" href="#">WebSoftwareAssignment</a>
 				<a href="#/index">Home</a>
+				
 			  </div>
 			  <ul class="nav navbar-nav">
 				
 				<li>
-				<button class="btn btn-primary"  id="logoutButton">Logout</button>
+				
 		
 			
 			  </ul>
@@ -302,15 +313,16 @@
 				<div data-role="header">
 					<h1>Customer Page</h1>
 				</div><!-- /header -->
-				
+				<p>press here to Log out</p>
 				  <div id = "data2"> <p>Please Log in</p> </div>
+				 
 			
 			<div role="main" class="ui-content">
 
 				<form action="">
 			
 					<br>
-					<input type="button" class="ui-btn" onclick="myFunction()" value="add to order list + ">
+					<input type="button" class="ui-btn" onclick="appendOrder()" value="add to order list + ">
 					<br><br>
 		
 				  </form>
@@ -320,13 +332,22 @@
 				   Total Cost <input type="text" name="totalCost" id="totalCost" value="">
 				  
 			<button class="btn btn-primary" id="orderButton">Send Order</button>		
+	
 
 
-			<div id = "data4"> <p>Your Orders</p> </div>	
-			<div id = "data14"> <p>loop</p> </div>	
+			<div id = "data4"> <p>Your Orders are loading ....</p> </div>	
+			<div id = "data14"> <p></p> </div>	
+			<h3>News </h3>
+			<div id = "output"> <p>Loading news ........</p> </div>	
+
+		
+
+
+		
+
+
 		
 		</body>
-
 	
 	
 </div>	
@@ -360,6 +381,20 @@
 
 <script>
 
+	
+$("p").click(function(){
+    alert("You choose to log out.");
+	$.post( "/backend", { type: "logout" })
+    .done(function( data ) {
+  
+	  window.location="/index#login";
+  });
+
+  });
+
+
+
+
 $( "#loginButton" ).click(function() {
 
     var un = $("#login_username").val();
@@ -370,17 +405,17 @@ $( "#loginButton" ).click(function() {
     $.post( "/backend", { type: "login", username:un, password:pw})
     .done(function( data ) {
 		//Alert out the error message retirned from the login 
-   	alert(data);
+   //	alert(data);
 
 	if (data == 'customer'){
 			window.location="/index#customer";
 			document.getElementById("data2").innerHTML = window.productsFunction();
 			document.getElementById("data4").innerHTML = window.displayOneordersFunction();
-		
+			document.getElementById("output").innerHTML = window.getNews();
 	}else if(data == 'driver'){
 		
 			window.location="/index#driver";
-			document.getElementById("data1").innerHTML = window.displayordersFunction();
+			document.getElementById("data5").innerHTML = window.displayordersFunction();
 
 
 	}else if(data == 'manager'){
@@ -392,6 +427,8 @@ $( "#loginButton" ).click(function() {
   });
 
 });
+
+
 
 
 
@@ -422,11 +459,12 @@ $( "#loginButton" ).click(function() {
 	
 		
     var po = $("#productOrdered").val();
+	var tc = $("#totalCost").val();
     console.log(po);
 
-    $.post( "/backend", { type: "orders", productsordered:po })
+    $.post( "/backend", { type: "orders", productsordered:po, totalcost:tc})
     .done(function( data ) {
-  	alert("Productuct Ordered");
+  	alert("Product Ordered");
   });
 
     });
@@ -436,8 +474,8 @@ $( "#loginButton" ).click(function() {
 	$("#completeChart").click(function(){
 		//var newArray1 = [4,1];
 		 newArray1 = document.getElementById("data81").value;
-		alert("inside chart script")
-		alert(newArray1);
+	
+	
 		
 		var ctx = document.getElementById('myChart').getContext('2d');
 		var myChart = new Chart(ctx, {
@@ -477,6 +515,15 @@ $( "#loginButton" ).click(function() {
 	});
 
 
+
+
+
+
+
+
+	
+
+
 ////////////////////order table  clicked //////////////////////
 
 
@@ -508,6 +555,11 @@ var searchValue = "product";
 ///////////////////////////////////////displayorders and chart /////////////////////////
 
 var tdValue ;	
+
+
+
+
+
 function displayordersFunction(){
 
 
@@ -515,9 +567,14 @@ function displayordersFunction(){
     .done(function( data_return ) {
 		
 		
-
+//display on mangaer page and driver page
 $('#data1').html(data_return);
+$('#data5').html(data_return);
 
+
+
+
+// Get Satutus info for chart.js for manager page
 var Statusarray = []; //set up empty array
 var CompleteArray = [];
 var OpenArray = [];
@@ -559,7 +616,7 @@ var Completeres = resComplete.split(",");
 //  alert(Completeres.length);
 
   CompleteArray.push(Openres.length,Completeres.length);
-  alert(CompleteArray);
+ // alert(CompleteArray);
 
   document.getElementById("data81").innerHTML = CompleteArray;
 
@@ -625,6 +682,7 @@ function displayOneordersFunction(){
 
 	$.post( "/backend", { type: "displayOneorder"})
     .done(function( data_return ) {
+	//	alert(data_return);
 
 
 $('#data4').html(data_return);
@@ -663,40 +721,66 @@ for (var i = 0; i < elements.length; i++) {
 });
 }  
 
+function getNews(){
+	
+		$.getJSON("http://newsapi.org/v2/everything?q=food&from=2020-05-16&sortBy=publishedAt&apiKey=13aab3a68ae94691ad60ecc72d99772a",
+		function(data) {
+		//	alert(data);
+			for(var i=0; i<data.articles.length ; i++){
+		var singleTitle = data.articles[i].title;
+		var singleArticle = data.articles[i].description;
+
+		$('#output').append("TITLE:" + '<br>'+ ""+singleArticle + '<br>'+ "DESCRIPTION:" + '<br>'+ "" + singleArticle + '<br>')  ;
 
 
+			}
+			});
 
-
-	function myFunction() {
-		console.log("inside myfunction");
-		var txt = "";
-	  var i;
-		for (i = 0; i < 40; i++) {
-    if (myRadio[i].checked) {
-		txt = txt + myRadio[i].value + " ";
-
-		document.getElementById("productOrdered").value =  txt;
-    }
+ 
   }
 
 
 
 
+	function appendOrder() {
+		console.log("inside appendOrder");
+		var txt = "";
+		var newtxt = 0;
+		var newtxt1 = 0;
+		var sum = '';
+	  	var i;
+		var allSizes = []; //set up empty array
+
+	
+
+		for (i = 0; i < 40; i++) {
+    if (myRadio[i].checked) {
+		txt = txt + myRadio[i].value + " ";
+		var number = parseInt(myRadio[i].name );
+		
+		newtxt1 = myRadio[i].name + myRadio[i].name ;
+		allSizes.push(number)
+
+		
+		document.getElementById("productOrdered").value =  txt;
+		const reducer = (accumulator, currentValue) => accumulator + currentValue;
+		document.getElementById("totalCost").value =   allSizes.reduce(reducer);;
+    }
+
+	
+	
+
+  }
+  alert(allSizes.reduce(reducer));
 
 
 
-
- 
-
-
-
-
-
-
-
-
-	  document.getElementById("productOrdered").value =  txt;
 	}
+
+
+
+
+	
 	</script>
 	
 	
@@ -706,7 +790,7 @@ for (var i = 0; i < elements.length; i++) {
 <script>document.getElementById("data4").innerHTML = window.displayOneordersFunction();</script>
 <script>document.getElementById("data5").innerHTML = window.displayOneordersFunction();</script>
 
-
+<script>document.getElementById("output").innerHTML = window.getNews();</script>
 
 
 
