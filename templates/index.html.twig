@@ -121,11 +121,34 @@
 <!--  Strart of register page ------->
 
 <div data-role="page" id="register" data-theme="a">
-
-<div data-role="header">
-		<h1>Register</h1>
-	</div><!-- /header -->
-
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	  <title>Register</title>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	  <style>
+		/* Remove the navbar's default rounded borders and increase the bottom margin */ 
+		.navbar {
+		  margin-bottom: 50px;
+		  border-radius: 0;
+		}
+		
+		/* Remove the jumbotron's default bottom margin */ 
+		 .jumbotron {
+		  margin-bottom: 0;
+		}
+	   
+		/* Add a gray background color and some padding to the footer */
+		footer {
+		  background-color: #f2f2f2;
+		  padding: 25px;
+		}
+	  </style>
+	</head>
 <div role="main" class="ui-content"> 
 		<h2>Register</h2>
       
@@ -187,7 +210,7 @@
 		
 	</div><!-- /header -->
 	
-
+	<p>press here to Log out</p>
 <div id="data1"></div>
 <!--  chart div -->
 <div id="data81"></div>
@@ -221,7 +244,8 @@
 <div data-role="page" id="driver" data-theme="a">
 
 	<head>
-	<body ></body>
+	<body >
+
 	<title>Driver page</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -254,7 +278,7 @@
 				<h1>Driver page!</h1>
 			</div><!-- /header -->
 			
-	
+<p>press here to Log out</p>	
 <div id="data5"></div>
 		
 </div>
@@ -383,10 +407,10 @@
 
 	
 $("p").click(function(){
-    alert("You choose to log out.");
+    
 	$.post( "/backend", { type: "logout" })
     .done(function( data ) {
-  
+	//	alert("You choose to log out.");
 	  window.location="/index#login";
   });
 
@@ -436,6 +460,8 @@ $( "#loginButton" ).click(function() {
 
 
     $( "#registeredButton" ).click(function() {
+
+		alert("Register button pressed");
 	
     var un = $("#username").val();
     console.log(un);
@@ -446,7 +472,7 @@ $( "#loginButton" ).click(function() {
 
     $.post( "/backend", { type: "register", username:un, password:pw, acctype:ac})
     .done(function( data ) {
-  
+  alert(data);
   		});
 
     });

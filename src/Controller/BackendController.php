@@ -49,13 +49,15 @@ if($type == 'register'){
     
             $repo = $this->getDoctrine()->getRepository(Login::class);  //type of the entity
 
+            //check if username already exists
             $person = $repo->findOneBy([
-                'username' => $username,
-                'password' => $password
+                'username' => $username
 
             ]);
+
          
-         if  ($person!==''){
+         
+         if  (!is_null($person)){
             return new Response(
               ' there is already account with this '
   
@@ -78,14 +80,11 @@ if($type == 'register'){
 
             $entityManager->flush();
            
-         //   return $this->render('index.html.twig'); 
 
-      //   return new RedirectResponse('http://your.google.com');
 
         return new Response(
 
-         
-        //  RedirectResponse('http://your.google.com')
+
           'New Account was saved'
          //   return $this->render('index.html.twig')
         );
