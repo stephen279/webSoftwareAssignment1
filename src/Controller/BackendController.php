@@ -44,9 +44,7 @@ if($type == 'register'){
             $username = $request->request->get('username', 'this is username');
             $password = $request->request->get('password', 'this is password');
             $acctype = $request->request->get('acctype','none');
-
-
-    
+  
             $repo = $this->getDoctrine()->getRepository(Login::class);  //type of the entity
 
             //check if username already exists
@@ -54,7 +52,6 @@ if($type == 'register'){
                 'username' => $username
 
             ]);
-
          
          
          if  (!is_null($person)){
@@ -63,14 +60,10 @@ if($type == 'register'){
   
             );
 
-            // test your input function pass in the inuts
-
           }  
-
 
             //put into databse
             $entityManager = $this->getDoctrine()->getManager();
-
             $login = new Login();
             $login->setUsername($username);
             $login->setPassword($password);
@@ -132,12 +125,11 @@ if($type == 'register'){
             $repo = $this->getDoctrine()->getRepository(Login::class);  //type of the entity
 
             $person = $repo->findOneBy([
-                'username' => $username,
-                'password' => $password
+                'username' => $username
 
             ]);
          
-         if  ($person==''){
+         if  (is_null($person)){
           
             return new Response(
               ' No Account record please register then login '

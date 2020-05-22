@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -121,34 +120,11 @@
 <!--  Strart of register page ------->
 
 <div data-role="page" id="register" data-theme="a">
-	<!DOCTYPE html>
-	<html lang="en">
-	<head>
-	  <title>Register</title>
-	  <meta charset="utf-8">
-	  <meta name="viewport" content="width=device-width, initial-scale=1">
-	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-	  <style>
-		/* Remove the navbar's default rounded borders and increase the bottom margin */ 
-		.navbar {
-		  margin-bottom: 50px;
-		  border-radius: 0;
-		}
-		
-		/* Remove the jumbotron's default bottom margin */ 
-		 .jumbotron {
-		  margin-bottom: 0;
-		}
-	   
-		/* Add a gray background color and some padding to the footer */
-		footer {
-		  background-color: #f2f2f2;
-		  padding: 25px;
-		}
-	  </style>
-	</head>
+
+<div data-role="header">
+		<h1>Register</h1>
+	</div><!-- /header -->
+
 <div role="main" class="ui-content"> 
 		<h2>Register</h2>
       
@@ -166,7 +142,7 @@
 
 <div data-role="page" id="manager" data-theme="a">
 	<head>
-		<button class="btn btn-primary"  id="logoutButton">Logouts</button>
+	
 		<body >
 		<title>Manager</title>
 		<meta charset="utf-8">
@@ -190,7 +166,7 @@
 			  <ul class="nav navbar-nav">
 				
 				<li>
-				<button class="btn btn-primary"  id="logoutButton">Logout</button>
+			
 		
 			
 			  </ul>
@@ -214,7 +190,7 @@
 <div id="data1"></div>
 <!--  chart div -->
 <div id="data81"></div>
-<div id="data91"></div>
+
 <canvas id="myChart" width="400" height="400"></canvas>
 
 
@@ -248,36 +224,50 @@
 
 	<title>Driver page</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  </head>
-  <body>
+
+
+
+
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-		  <div class="navbar-header">
-			<a class="navbar-brand" href="#">WebSoftwareAssignment</a>
-			<a href="#/index">Home</a>
-			<li><a href="#/weather/index">Get the Weather forcast !!!!!!!!!!!!!!</a></li>
-		  </div>
-		  <ul class="nav navbar-nav">
+	</head>
+	<body>
+  
+	  <nav class="navbar navbar-default">
+		  <div class="container-fluid">
+			<div class="navbar-header">
+			  <a class="navbar-brand" href="#">WebSoftwareAssignment</a>
+			  
+			  
+			</div>
+			<ul class="nav navbar-nav">
+			  <a href="#/index">Home</a>
 			
-			<li>
-			<button class="btn btn-primary"  id="logoutButton">Logout</button>
-	
-		
-		  </ul>
-		</div>
-	  </nav>
+			  <li>
+			  
+	  
+		  
+			</ul>
+		  </div>
+		</nav>
+
+
+
+
+
+
+
+
 
 <div class="container">
 
 			<div data-role="header">
 				<h1>Driver page!</h1>
 			</div><!-- /header -->
-			
+			<li><a href="#/weather/index">Get the Weather forcast !!!!!!!!!!!!!!</a></li>
 <p>press here to Log out</p>	
 <div id="data5"></div>
 		
@@ -314,11 +304,11 @@
 			<div class="container-fluid">
 			  <div class="navbar-header">
 				<a class="navbar-brand" href="#">WebSoftwareAssignment</a>
-				<a href="#/index">Home</a>
+				
 				
 			  </div>
 			  <ul class="nav navbar-nav">
-				
+				<a href="#/index">Home</a>
 				<li>
 				
 		
@@ -327,10 +317,6 @@
 			</div>
 		  </nav>
 			
-
-
-
-	  
 
 		    <div class="container">
 
@@ -429,7 +415,7 @@ $( "#loginButton" ).click(function() {
     $.post( "/backend", { type: "login", username:un, password:pw})
     .done(function( data ) {
 		//Alert out the error message retirned from the login 
-   //	alert(data);
+   	alert(data);
 
 	if (data == 'customer'){
 			window.location="/index#customer";
@@ -496,7 +482,8 @@ $( "#loginButton" ).click(function() {
     });
 
 
-
+/*
+/////////NOT USED //////////
 	$("#completeChart").click(function(){
 		//var newArray1 = [4,1];
 		 newArray1 = document.getElementById("data81").value;
@@ -543,7 +530,7 @@ $( "#loginButton" ).click(function() {
 
 
 
-
+*/
 
 
 
@@ -605,16 +592,17 @@ var Statusarray = []; //set up empty array
 var CompleteArray = [];
 var OpenArray = [];
 
-for (i=0;i<td.length ; i++){
-tdValue = td[i].innerHTML;
+for (i=0;i<td2.length; i++){
+//	alert(td2.length);
+tdValue = td2[i].innerHTML;
+
+//alert(tdValue);
 
 Statusarray.push(tdValue)
 
-
+//alert(Statusarray);
 			
 $('#data81').html(Statusarray);
-
-
 
 	
 
@@ -636,13 +624,13 @@ OpenArray.push(resComplete);
 
 
   var Openres = resOpen.split(",");
-//  alert(Openres.length);
+
 //  PUSH TO ARRAY THEN GET INDEX COUNT
 var Completeres = resComplete.split(",");
-//  alert(Completeres.length);
+
 
   CompleteArray.push(Openres.length,Completeres.length);
- // alert(CompleteArray);
+  alert(CompleteArray);
 
   document.getElementById("data81").innerHTML = CompleteArray;
 
@@ -652,12 +640,12 @@ var Completeres = resComplete.split(",");
   newArray1 = document.getElementById("data81").value;
 
 
-		///CHART PART
+		///CHART.js PART
 		
 		var ctx = document.getElementById('myChart').getContext('2d');
 		var myChart = new Chart(ctx, {
 			
-			type: 'bar',
+			type: 'pie',
 			data: {
 				labels: ['Open', 'Complete'],
 				datasets: [{
@@ -749,14 +737,14 @@ for (var i = 0; i < elements.length; i++) {
 
 function getNews(){
 	
-		$.getJSON("http://newsapi.org/v2/everything?q=food&from=2020-05-16&sortBy=publishedAt&apiKey=13aab3a68ae94691ad60ecc72d99772a",
+		$.getJSON("https://gnews.io/api/v3/search?q=example&token=1224178ea6d4fbd60b5872c762234b04",
 		function(data) {
 		//	alert(data);
 			for(var i=0; i<data.articles.length ; i++){
 		var singleTitle = data.articles[i].title;
 		var singleArticle = data.articles[i].description;
 
-		$('#output').append("TITLE:" + '<br>'+ ""+singleArticle + '<br>'+ "DESCRIPTION:" + '<br>'+ "" + singleArticle + '<br>')  ;
+		$('#output').append("TITLE:" + '<br>'+ ""+singleTitle + '<br>'+ "description:" +  "" + singleArticle + '<br>')  ;
 
 
 			}
@@ -778,7 +766,6 @@ function getNews(){
 		var allSizes = []; //set up empty array
 
 	
-
 		for (i = 0; i < 40; i++) {
     if (myRadio[i].checked) {
 		txt = txt + myRadio[i].value + " ";
@@ -793,8 +780,6 @@ function getNews(){
 		document.getElementById("totalCost").value =   allSizes.reduce(reducer);;
     }
 
-	
-	
 
   }
   alert(allSizes.reduce(reducer));
